@@ -6,23 +6,26 @@
 # Save the plot to a PNG file, 480 x 480 pixels.
 
 # Load required libraries
-library(lubridate)
-library(dplyr)
 
-# Read in the data.
-# if(!exists("./data/")) {dir.create("./data/")}
-# if!(exists("./data/household_power_consumption.txt")) {
-#   
-#   dataurl <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
-#   
-#   download.file(dataurl,destfile="./data/data.zip",mode='wb')
-#   
-#   unzip(zipfile="./data/data.zip", files=NULL, list=FALSE, overwrite=FALSE, 
-#       junkpaths=FALSE, exdir=paste(getwd(),"/data",sep=""), unzip="internal",
-#       setTimes=FALSE)
-#   
-#   rm(dataurl)
-#   }
+library(lubridate)
+
+#Check for data and download it if needed
+
+if(!file.exists("./data")) {dir.create("./data")}
+if(!file.exists("./data/household_power_consumption.txt")) {
+  
+  dataurl <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+  
+  download.file(dataurl,destfile="./data/data.zip",mode='wb')
+  
+  unzip(zipfile="./data/data.zip", files=NULL, list=FALSE, overwrite=FALSE, 
+      junkpaths=FALSE, exdir=paste(getwd(),"/data",sep=""), unzip="internal",
+      setTimes=FALSE)
+  
+  rm(dataurl)
+  }
+
+# Read data into environment
 
 rawdata <- read.table("./data/household_power_consumption.txt", header=TRUE,
                       sep=";", na.strings="?")
