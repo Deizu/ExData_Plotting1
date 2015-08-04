@@ -46,7 +46,7 @@ data$Time <- hms(data$Time)
 
 # Plot the graph
 
-png(file="plot2.png",width=480,height=480)
+png(file="plot2.png", width=480, height=480)
 
 plot(x=data$DT, y=data$Global_active_power, typ="l", sub="",
      xlab="", ylab="Global Active Power (kilowatts)")

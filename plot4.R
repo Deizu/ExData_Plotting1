@@ -48,7 +48,7 @@ data$Time <- hms(data$Time)
 
 png(file="plot4.png", width=480, height=480)
 
-par(mfrow = c(2,2), pty="s")
+par(mfrow = c(2,2), pty="s", mar=c(4,4,1,1))
 
 with(data, {
   
@@ -62,7 +62,7 @@ with(data, {
                    ylab="Energy sub metering") 
   lines(datetime, Sub_metering_2, col="red")
   lines(datetime, Sub_metering_3, col="blue")
-  legend("topright", lty=1, fill=FALSE, border=FALSE, col=c("black","blue","red"), 
+  legend("topright", lty=1, bty="n", col=c("black","blue","red"), 
                      legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
   plot(datetime, Global_reactive_power, typ="l", xlab="datetime",
